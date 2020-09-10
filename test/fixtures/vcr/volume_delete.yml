@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: unix:///var/run/docker.sock/v1.16/volumes/690a2d87-08de-4834-8cff-cecce76ecb89
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Swipely/Docker-API 1.34.2
+      Accept:
+      - "*/*"
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      Api-Version:
+      - '1.40'
+      Content-Length:
+      - '307'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 09 Sep 2020 21:18:36 GMT
+      Docker-Experimental:
+      - 'true'
+      Ostype:
+      - linux
+      Server:
+      - Docker/19.03.12 (linux)
+    body:
+      encoding: ASCII-8BIT
+      string: '{"CreatedAt":"2020-09-09T21:14:15Z","Driver":"local","Labels":{"deployment_id":"2","name":"690a2d87-08de-4834-8cff-cecce76ecb89","service_id":"5"},"Mountpoint":"/var/lib/docker/volumes/690a2d87-08de-4834-8cff-cecce76ecb89/_data","Name":"690a2d87-08de-4834-8cff-cecce76ecb89","Options":null,"Scope":"local"}
+
+        '
+    http_version:
+  recorded_at: Wed, 09 Sep 2020 21:18:36 GMT
+- request:
+    method: delete
+    uri: unix:///var/run/docker.sock/v1.16/volumes/690a2d87-08de-4834-8cff-cecce76ecb89
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Swipely/Docker-API 1.34.2
+      Accept:
+      - "*/*"
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 204
+      message:
+    headers:
+      Api-Version:
+      - '1.40'
+      Date:
+      - Wed, 09 Sep 2020 21:18:36 GMT
+      Docker-Experimental:
+      - 'true'
+      Ostype:
+      - linux
+      Server:
+      - Docker/19.03.12 (linux)
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    http_version:
+  recorded_at: Wed, 09 Sep 2020 21:18:36 GMT
+recorded_with: VCR 5.1.0
