@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/ComputeStacks/docker-volume-local"
-  spec.metadata["changelog_uri"] = "https://github.com/ComputeStacks/docker-volume-local"
+  spec.metadata["changelog_uri"] = "https://github.com/ComputeStacks/docker-volume-local/blob/master/CHANGELOG.md"
   spec.metadata['github_repo'] = "ssh://github.com/ComputeStacks/docker-volume-local.git"
 
   # Specify which files should be added to the gem when it is released.
