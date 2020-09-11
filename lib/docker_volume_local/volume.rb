@@ -1,17 +1,21 @@
 module DockerVolumeLocal
   class Volume < Connection
 
-    attr_accessor :errors,
-                  :instance # ComputeStacks Volume Object
+    attr_accessor :id,
+                  :labels,
+                  :errors
 
-    def initialize(obj)
-      self.instance = obj
+
+    def initialize(id, labels = {})
+      raise VolumeError, 'Missing Volume ID' if id.blank?
+      self.id = id
+      self.labels = labels
       self.errors = []
     end
 
     # @return [Boolean]
     def provisioned?
-      Docker::Volume.get(instance.name, client).is_a? Docker::Volume
+      Docker::Volume.get(id, client).is_a? Docker::Volume
     rescue Docker::Error::NotFoundError
       false
     end
@@ -20,14 +24,10 @@ module DockerVolumeLocal
     def create!
       return true if provisioned?
       vol_data = {
-        'Labels' => {
-          'name' => instance.name,
-          'deployment_id' => instance.deployment.id.to_s,
-          'service_id' => instance.container_service.id.to_s
-        },
+        'Labels' => labels,
         'Driver' => 'local'
       }
-      result = Docker::Volume.create(instance.name, vol_data, client)
+      result = Docker::Volume.create(id, vol_data, client)
       return true if result.is_a?(Docker::Volume)
       errors << result.inspect
       false
@@ -35,7 +35,7 @@ module DockerVolumeLocal
 
     # @return [Boolean]
     def destroy!
-      obj = Docker::Volume.get(instance.name, client)
+      obj = Docker::Volume.get(id, client)
       obj.remove({}, client).blank?
     rescue Docker::Error::NotFoundError
       true

@@ -1,11 +1,12 @@
 require "active_support"
 require "active_support/core_ext/object/blank"
 require 'docker'
+require 'net/ssh'
+
 require 'docker_volume_local/connection'
 require 'docker_volume_local/errors'
 require "docker_volume_local/version"
 require 'docker_volume_local/volume'
-require 'net/ssh'
 
 module DockerVolumeLocal
 
