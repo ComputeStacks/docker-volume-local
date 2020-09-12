@@ -1,21 +1,21 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: https://192.168.173.10:2376/v1.16/volumes/create
+    method: get
+    uri: https://192.168.173.10:2376/v1.16/volumes/690a2d87-08de-4834-8cff-cecce76ecb89
     body:
-      encoding: UTF-8
-      string: '{"Labels":{"name":"690a2d87-08de-4834-8cff-cecce76ecb89","deployment_id":"1","service_id":"1"},"Driver":"local","Name":"690a2d87-08de-4834-8cff-cecce76ecb89"}'
+      encoding: US-ASCII
+      string: ''
     headers:
       User-Agent:
       - Swipely/Docker-API 1.34.2
       Accept:
       - "*/*"
       Content-Type:
-      - application/json
+      - text/plain
   response:
     status:
-      code: 201
+      code: 200
       message:
     headers:
       Api-Version:

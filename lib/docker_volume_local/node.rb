@@ -1,37 +1,36 @@
 module DockerVolumeLocal
-  class Connection
+  # @!attribute instance
+  #   @return [TestMocks::Node]
+  class Node
 
-    ##
-    # Simple test to ensure we can connect to the required resources
-    #
-    # @return [Boolean]
-    def online?
-      Docker.ping(client) == 'OK' && !remote_exec('date').blank?
+    attr_accessor :instance # ComputeStacks Node
+
+    # @param [TestMocks::Node] instance
+    def initialize(instance)
+      self.instance = instance
     end
 
-    ##
-    # Calculates all usage for a given ssh instance
-    # @return [Array]
     def usage
-      data = remote_exec %q(sudo bash -c 'du --block-size 1024 -s /var/lib/docker/volumes/*')
-      data.gsub("/var/lib/docker/volumes/","").split("\n").map {|i| i.split("\t")}.map {|i,k| {size: i.strip, id: k.strip} }
+      data = remote_exec %Q(sudo bash -c 'du --block-size 1024 -s #{DockerVolumeLocal.config[:docker_volume_path]}/*')
+      data.gsub("#{DockerVolumeLocal.config[:docker_volume_path]}/","").split("\n").map {|i| i.split("\t")}.map {|i,k| {size: i.strip, id: k.strip} }
     rescue
       []
     end
 
-    protected
+    def online?
+      Docker.ping(client) == 'OK' && !remote_exec('date').blank?
+    end
 
     ##
     # Provide a Docker Client
     #
     # @return [Docker::Connection]
     def client
-      raise Error, 'Missing Docker Configuration' if DockerVolumeLocal.config[:node_address].nil?
       opts = Docker.connection.options
       opts[:connect_timeout] = 15
       opts[:read_timeout] = 75
       opts[:write_timeout] = 75
-      Docker::Connection.new(DockerVolumeLocal.config[:node_address], opts)
+      Docker::Connection.new(connection_string, opts)
     end
 
     ##
@@ -56,18 +55,27 @@ module DockerVolumeLocal
 
     # @return [Connection::Session]
     def ssh_client
+      raise SSHError, 'Missing SSH Key' if DockerVolumeLocal.config[:ssh_key].nil?
       Net::SSH.start(
-        DockerVolumeLocal.config[:ssh_address],
-        DockerVolumeLocal.config[:ssh_user],
+        instance.primary_ip,
+        'root',
         keys: [ DockerVolumeLocal.config[:ssh_key] ],
         user_known_hosts_file: '/dev/null',
         auth_methods: ['publickey'],
-        port: DockerVolumeLocal.config[:ssh_port]
+        port: instance.ssh_port
       )
     rescue Net::SSH::AuthenticationFailed
       raise SSHError, 'SSH Authentication Failed'
     rescue => e
       raise SSHError, "Fatal error: #{e.message}"
+    end
+
+    ##
+    # Allow setting the primary_ip to a unix socket
+    #
+    # @return [String]
+    def connection_string
+      instance.primary_ip.split('://')[0] == 'unix' ? instance.primary_ip : "tcp://#{instance.primary_ip}:2376"
     end
 
   end

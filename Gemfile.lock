@@ -10,7 +10,7 @@ GIT
 PATH
   remote: .
   specs:
-    docker_volume_local (0.1.1)
+    docker_volume_local (0.2.0)
       activesupport (> 5.0)
       bcrypt_pbkdf (> 1.0)
       docker-api
