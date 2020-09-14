@@ -51,6 +51,14 @@ module DockerVolumeLocal
       raise SSHError, 'SSH Timeout'
     end
 
+    ##
+    # Find all volumes on this node
+    def list_all_volumes
+      Docker::Volume.all({}, client)
+    rescue
+      []
+    end
+
     private
 
     # @return [Connection::Session]

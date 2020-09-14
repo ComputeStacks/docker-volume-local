@@ -14,4 +14,10 @@ describe DockerVolumeLocal::Node do
     end
   end
 
+  it 'can list all volumes on a node' do
+    VCR.use_cassette('node.list_all_volumes') do
+      refute_empty DockerVolumeLocal::Node.new(TestMocks::Node.new).list_all_volumes
+    end
+  end
+
 end

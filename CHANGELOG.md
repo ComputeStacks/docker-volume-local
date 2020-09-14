@@ -1,7 +1,11 @@
 # Changelog
 
-## v.0.2.0
+## v0.2.1
 
-### Sep 2020
+* Support listing all volumes for a node.
+
+***
+
+## v.0.2.0
  
 * Initial
