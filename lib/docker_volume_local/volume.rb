@@ -51,6 +51,21 @@ module DockerVolumeLocal
       true
     end
 
+    ##
+    # Returns the volume usage in KB.
+    def usage
+      usage = 0
+      instance.nodes.each do |node|
+        data = DockerVolumeLocal::Node.new(node).remote_exec(
+          %Q(sudo bash -c "du --total --block-size 1024 -s #{DockerVolumeLocal.config[:docker_volume_path]}/#{instance.name}/_data | grep total")
+        )
+        usage += data.split("\t")[0].strip.to_i
+      end
+      usage
+    rescue
+      nil
+    end
+
     private
 
     # @return [Hash]
