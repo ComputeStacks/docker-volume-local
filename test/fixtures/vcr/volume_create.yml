@@ -1,6 +1,170 @@
 ---
 http_interactions:
 - request:
+    method: get
+    uri: https://192.168.173.10:2376/v1.16/volumes/690a2d87-08de-4834-8cff-cecce76ecb89
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Swipely/Docker-API 1.34.2
+      Accept:
+      - "*/*"
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 404
+      message:
+    headers:
+      Api-Version:
+      - '1.40'
+      Content-Type:
+      - text/plain; charset=utf-8
+      Docker-Experimental:
+      - 'true'
+      Ostype:
+      - linux
+      Server:
+      - Docker/19.03.12 (linux)
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 18 Sep 2020 02:14:22 GMT
+      Content-Length:
+      - '57'
+    body:
+      encoding: ASCII-8BIT
+      string: 'get 690a2d87-08de-4834-8cff-cecce76ecb89: no such volume
+
+        '
+    http_version:
+  recorded_at: Fri, 18 Sep 2020 02:14:22 GMT
+- request:
+    method: get
+    uri: https://192.168.173.10:2376/v1.16/volumes/690a2d87-08de-4834-8cff-cecce76ecb89
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Swipely/Docker-API 1.34.2
+      Accept:
+      - "*/*"
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 404
+      message:
+    headers:
+      Api-Version:
+      - '1.40'
+      Content-Type:
+      - text/plain; charset=utf-8
+      Docker-Experimental:
+      - 'true'
+      Ostype:
+      - linux
+      Server:
+      - Docker/19.03.12 (linux)
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 18 Sep 2020 02:14:22 GMT
+      Content-Length:
+      - '57'
+    body:
+      encoding: ASCII-8BIT
+      string: 'get 690a2d87-08de-4834-8cff-cecce76ecb89: no such volume
+
+        '
+    http_version:
+  recorded_at: Fri, 18 Sep 2020 02:14:22 GMT
+- request:
+    method: get
+    uri: https://192.168.173.10:2376/v1.16/volumes/690a2d87-08de-4834-8cff-cecce76ecb89
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Swipely/Docker-API 1.34.2
+      Accept:
+      - "*/*"
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 404
+      message:
+    headers:
+      Api-Version:
+      - '1.40'
+      Content-Type:
+      - text/plain; charset=utf-8
+      Docker-Experimental:
+      - 'true'
+      Ostype:
+      - linux
+      Server:
+      - Docker/19.03.12 (linux)
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 18 Sep 2020 02:14:22 GMT
+      Content-Length:
+      - '57'
+    body:
+      encoding: ASCII-8BIT
+      string: 'get 690a2d87-08de-4834-8cff-cecce76ecb89: no such volume
+
+        '
+    http_version:
+  recorded_at: Fri, 18 Sep 2020 02:14:22 GMT
+- request:
+    method: get
+    uri: https://192.168.173.10:2376/v1.16/volumes/690a2d87-08de-4834-8cff-cecce76ecb89
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Swipely/Docker-API 1.34.2
+      Accept:
+      - "*/*"
+      Content-Type:
+      - text/plain
+  response:
+    status:
+      code: 404
+      message:
+    headers:
+      Api-Version:
+      - '1.40'
+      Content-Type:
+      - text/plain; charset=utf-8
+      Docker-Experimental:
+      - 'true'
+      Ostype:
+      - linux
+      Server:
+      - Docker/19.03.12 (linux)
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Fri, 18 Sep 2020 02:14:22 GMT
+      Content-Length:
+      - '57'
+    body:
+      encoding: ASCII-8BIT
+      string: 'get 690a2d87-08de-4834-8cff-cecce76ecb89: no such volume
+
+        '
+    http_version:
+  recorded_at: Fri, 18 Sep 2020 02:14:22 GMT
+- request:
     method: post
     uri: https://192.168.173.10:2376/v1.16/volumes/create
     body:
@@ -29,14 +193,14 @@ http_interactions:
       Server:
       - Docker/19.03.12 (linux)
       Date:
-      - Sat, 12 Sep 2020 20:24:09 GMT
+      - Fri, 18 Sep 2020 02:14:22 GMT
       Content-Length:
       - '312'
     body:
       encoding: ASCII-8BIT
-      string: '{"CreatedAt":"2020-09-12T13:24:09-07:00","Driver":"local","Labels":{"deployment_id":"1","name":"690a2d87-08de-4834-8cff-cecce76ecb89","service_id":"1"},"Mountpoint":"/var/lib/docker/volumes/690a2d87-08de-4834-8cff-cecce76ecb89/_data","Name":"690a2d87-08de-4834-8cff-cecce76ecb89","Options":null,"Scope":"local"}
+      string: '{"CreatedAt":"2020-09-17T19:14:22-07:00","Driver":"local","Labels":{"deployment_id":"1","name":"690a2d87-08de-4834-8cff-cecce76ecb89","service_id":"1"},"Mountpoint":"/var/lib/docker/volumes/690a2d87-08de-4834-8cff-cecce76ecb89/_data","Name":"690a2d87-08de-4834-8cff-cecce76ecb89","Options":null,"Scope":"local"}
 
         '
     http_version:
-  recorded_at: Sat, 12 Sep 2020 20:24:09 GMT
+  recorded_at: Fri, 18 Sep 2020 02:14:22 GMT
 recorded_with: VCR 5.1.0

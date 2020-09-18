@@ -18,6 +18,7 @@ module DockerVolumeLocal
     def provisioned?
       result = true
       instance.nodes.each do |node|
+        next unless node.online?
         result = docker_client(node).is_a?(Docker::Volume)
         break unless result # halt if failed
       end
@@ -29,6 +30,7 @@ module DockerVolumeLocal
       raise VolumeError, 'Missing Volume' if instance.nil?
       instance.nodes.each do |node|
         next unless node.online?
+        next unless docker_client(node).nil?
         result = Docker::Volume.create(instance.name, volume_data, DockerVolumeLocal::Node.new(node).client)
         unless result.is_a?(Docker::Volume)
           errors << "Fatal error provisioning volume on node: #{node.label}"
@@ -44,13 +46,13 @@ module DockerVolumeLocal
       instance.nodes.each do |node|
         next unless node.online?
         client = DockerVolumeLocal::Node.new(node).client
-        success = docker_client(node).remove({}, client).blank?
+        vol_client = docker_client(node)
+        next if vol_client.nil?
+        success = vol_client.remove({}, client).blank?
         break unless success
       end
       errors << "Error removing volume from docker. Volume still exists on remote server." unless success
       success
-    rescue Docker::Error::NotFoundError
-      true
     end
 
     ##
@@ -85,6 +87,8 @@ module DockerVolumeLocal
     # @return [Docker::Volume]
     def docker_client(node)
       Docker::Volume.get(instance.name, DockerVolumeLocal::Node.new(node).client)
+    rescue Docker::Error::NotFoundError
+      nil
     end
 
   end
