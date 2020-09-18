@@ -28,6 +28,7 @@ module DockerVolumeLocal
     def create!
       raise VolumeError, 'Missing Volume' if instance.nil?
       instance.nodes.each do |node|
+        next unless node.online?
         result = Docker::Volume.create(instance.name, volume_data, DockerVolumeLocal::Node.new(node).client)
         unless result.is_a?(Docker::Volume)
           errors << "Fatal error provisioning volume on node: #{node.label}"
@@ -41,6 +42,7 @@ module DockerVolumeLocal
     def destroy
       success = true
       instance.nodes.each do |node|
+        next unless node.online?
         client = DockerVolumeLocal::Node.new(node).client
         success = docker_client(node).remove({}, client).blank?
         break unless success
