@@ -11,7 +11,7 @@ module DockerVolumeLocal
     end
 
     def usage
-      data = remote_exec %Q(sudo bash -c 'du --block-size 1024 -s #{DockerVolumeLocal.config[:docker_volume_path]}/*')
+      data = remote_exec %Q(sudo bash -c 'du --block-size 1K -s #{DockerVolumeLocal.config[:docker_volume_path]}/*')
       data.gsub("#{DockerVolumeLocal.config[:docker_volume_path]}/","").split("\n").map {|i| i.split("\t")}.map {|i,k| {size: i.strip, id: k.strip} }
     rescue
       []

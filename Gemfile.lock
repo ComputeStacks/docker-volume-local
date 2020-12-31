@@ -10,7 +10,7 @@ GIT
 PATH
   remote: .
   specs:
-    docker_volume_local (0.2.4)
+    docker_volume_local (0.2.5)
       activesupport (> 5.0)
       bcrypt_pbkdf (> 1.0)
       docker-api
@@ -20,14 +20,14 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (6.0.3.3)
+    activesupport (6.1.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (>= 0.7, < 2)
-      minitest (~> 5.1)
-      tzinfo (~> 1.1)
-      zeitwerk (~> 2.2, >= 2.2.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+      zeitwerk (~> 2.3)
     ansi (1.5.0)
-    bcrypt_pbkdf (1.0.1)
+    bcrypt_pbkdf (1.1.0)
     builder (3.2.4)
     concurrent-ruby (1.1.7)
     ed25519 (1.2.4)
@@ -44,11 +44,10 @@ GEM
     net-ssh (6.1.0)
     rake (12.3.3)
     ruby-progressbar (1.10.1)
-    thread_safe (0.3.6)
-    tzinfo (1.2.7)
-      thread_safe (~> 0.1)
+    tzinfo (2.0.4)
+      concurrent-ruby (~> 1.0)
     vcr (6.0.0)
-    zeitwerk (2.4.0)
+    zeitwerk (2.4.2)
 
 PLATFORMS
   ruby
