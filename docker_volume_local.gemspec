@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'docker-api'
   spec.add_runtime_dependency 'net-ssh', '> 6.0'
   spec.add_runtime_dependency 'ed25519', '> 1.2'
-  spec.add_runtime_dependency 'bcrypt_pbkdf', '> 1.0'
+  # spec.add_runtime_dependency 'bcrypt_pbkdf', '> 1.0'
 
   spec.add_development_dependency "minitest", "~> 5.13"
   spec.add_development_dependency "minitest-reporters", "> 1"
